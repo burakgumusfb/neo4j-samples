@@ -25,23 +25,19 @@ namespace Neo4j.Samples.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<Product>().HasData(
-            //                     new Product
-            //                     (
-            //                         "PC-1",
-            //                         "Product 1"
-            //                     ),
-            //                     new Product
-            //                     (
-            //                        "PC-2",
-            //                        "Product 2"
-            //                     ),
-            //                     new Product
-            //                     (
-            //                         "PC-3",
-            //                         "Product 3"
-            //                     )
-            //              );
+            modelBuilder.Entity<User>().HasData(
+                                new User
+                                (   1,
+                                    "a@a.com",
+                                    "123"
+                                ),
+                                new User
+                                (
+                                    2,
+                                    "b@b.com",
+                                    "123"
+                                )
+                         );
 
             base.OnModelCreating(modelBuilder);
 

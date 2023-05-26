@@ -17,7 +17,7 @@
     <ProjectReference Include="..\Neo4j.Samples.Application\Neo4j.Samples.Application.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\Neo4j.Samples.Infrastructure\Neo4j.Samples.Infrastructure.csproj">
+    <ProjectReference Include="..\Neo4j.Samples.Persistence\Neo4j.Samples.Persistence.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

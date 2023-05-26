@@ -8,10 +8,16 @@ namespace Neo4j.Samples.Domain.Entities
         public int Id { get;  set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
-        public User(string productCode, string productName)
+        public User(int id, string email, string password)
         {
-            this.Email = productCode;
-            this.Password = productName;
+            this.Id = id;
+            this.Email = email;
+            this.Password = password;
+        }
+        public User(string email, string password)
+        {
+            this.Email = email;
+            this.Password = password;
         }
     }
 }
