@@ -8,10 +8,8 @@ using Mini.Social.Media.Domain.Entities;
 
 namespace Mini.Social.Media.Application.Interfaces
 {
-    public interface IGraphQLRepository
-    {   Task BeginTransactionAsync();
-        Task CommitAsync();
-        Task RollbackAsync ();
+    public interface IGraphQLUnitOfWork:ITransactionManager
+    {  
         Task ExecuteWriteAsync(string query);
         Task<IResultCursor> ExecuteReadAsync(string query);
     }

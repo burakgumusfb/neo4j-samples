@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Neo4j.Driver" Version="5.8.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mini.Social.Media.Application\Mini.Social.Media.Application.csproj" />
+    <ProjectReference Include="..\Mini.Social.Media.Domain\Mini.Social.Media.Domain.csproj" />
+  </ItemGroup>
+</Project>

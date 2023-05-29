@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini.Social.Media.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini.Social.Media.API", "Mini.Social.Media.API\Mini.Social.Media.API.csproj", "{285AC686-5F40-41F7-AD57-B1EEAF291BDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mini.Social.Media.Graphql", "Mini.Social.Media.Graphql\Mini.Social.Media.Graphql.csproj", "{78AF0062-2F86-4367-A1F3-9D2D54071BE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{285AC686-5F40-41F7-AD57-B1EEAF291BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{285AC686-5F40-41F7-AD57-B1EEAF291BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{285AC686-5F40-41F7-AD57-B1EEAF291BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78AF0062-2F86-4367-A1F3-9D2D54071BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78AF0062-2F86-4367-A1F3-9D2D54071BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78AF0062-2F86-4367-A1F3-9D2D54071BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78AF0062-2F86-4367-A1F3-9D2D54071BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

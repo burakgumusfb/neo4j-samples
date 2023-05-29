@@ -1,27 +1,23 @@
 using System;
 using System.Linq.Expressions;
 using AutoMapper;
-using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Mini.Social.Media.Application.Interfaces;
 using Mini.Social.Media.Domain.Common;
 using Mini.Social.Media.Domain.Entities;
-using Mini.Social.Media.Persistence.Context;
-using Mini.Social.Media.Application.Interfaces;
 using Mini.Social.Media.Domain.Extensions;
 using Neo4j.Driver;
-using Mini.Social.Media.Application.Interfaces;
 
-namespace Mini.Social.Media.Application.Mappings
+namespace Mini.Social.Media.Graphql.GraphqlDB
 {
-    public class Neo4JDbRepository : IGraphQLRepository
+    public class Neo4jUnitOfWork : IGraphQLUnitOfWork
     {
 
         private IAsyncSession _session;
         private IAsyncTransaction _transaction;
         private readonly IDriver _driver;
-        public Neo4JDbRepository(IDriver driver)
+        public Neo4jUnitOfWork(IDriver driver)
         {
             _driver = driver;
             _session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
@@ -61,6 +57,7 @@ namespace Mini.Social.Media.Application.Mappings
                 await _transaction.DisposeAsync();
             }
         }
+
     }
 }
 

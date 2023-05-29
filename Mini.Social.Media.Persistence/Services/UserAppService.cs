@@ -12,8 +12,8 @@ namespace Mini.Social.Media.Application.Mappings
     public class UserAppService : IUserAppService
     {
         private readonly IUnitofWork _uow;
-        private readonly IGraphQLRepository _igql;
-        public UserAppService(IUnitofWork uow, IGraphQLRepository igql)
+        private readonly IGraphQLUnitOfWork _igql;
+        public UserAppService(IUnitofWork uow, IGraphQLUnitOfWork igql)
         {
             _uow = uow;
             _igql = igql;

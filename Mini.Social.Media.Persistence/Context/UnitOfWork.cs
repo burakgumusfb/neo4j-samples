@@ -67,7 +67,7 @@ namespace Mini.Social.Media.Persistence.Context
         {
             var transaction = DB.Database.CurrentTransaction?.GetUnderlyingTransaction(new BulkConfig() { });
             if (transaction != null)
-                return DB.Database.GetDbConnection().Query<T>(query, parms, commandType: commandType, transaction: transaction,commandTimeout:3600).ToList();
+                return DB.Database.GetDbConnection().Query<T>(query, parms, commandType: commandType, transaction: transaction, commandTimeout: 3600).ToList();
             else
                 return DB.Database.GetDbConnection().Query<T>(query, parms, commandType: commandType, commandTimeout: 3600).ToList();
 
@@ -78,7 +78,7 @@ namespace Mini.Social.Media.Persistence.Context
             if (transaction == null)
                 throw new Exception("transaction_problem");
 
-            var result = DB.Database.GetDbConnection().Execute(query, parms, commandType: commandType, transaction: transaction,commandTimeout: 3600);
+            var result = DB.Database.GetDbConnection().Execute(query, parms, commandType: commandType, transaction: transaction, commandTimeout: 3600);
             return result;
         }
 

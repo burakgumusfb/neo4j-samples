@@ -13,13 +13,13 @@ namespace Mini.Social.Media.Application.Features.UserOperations.Commands.CreateU
     public class CreateProductCommandHandler : IRequestHandler<CreateUserCommandRequest, ServiceResult<CreateUserCommandResponse>>
     {
         private readonly IUnitofWork _uow;
-        private readonly IGraphQLRepository _igql;
+        private readonly IGraphQLUnitOfWork _igql;
         private readonly IUserAppService _userAppService;
         private readonly IMapper _mapper;
         public CreateProductCommandHandler(
             IUnitofWork uow,
             IUserAppService userAppService,
-            IGraphQLRepository igql,
+            IGraphQLUnitOfWork igql,
              IMapper mapper)
         {
             _uow = uow;
@@ -32,7 +32,9 @@ namespace Mini.Social.Media.Application.Features.UserOperations.Commands.CreateU
             var serviceResult = new ServiceResult<CreateUserCommandResponse>();
             await this._uow.BeginTransactionAsync();
             await this._igql.BeginTransactionAsync();
-                await _userAppService.CreateAsync(new User(request.Email,request.Password));
+
+            await _userAppService.CreateAsync(new User(request.Email,request.Password));
+            
             await this._igql.CommitAsync();
             await this._uow.CommitAsync();
             return serviceResult;

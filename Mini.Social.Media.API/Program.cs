@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mini.Social.Media.Persistence;
 using Mini.Social.Media.Persistence.Context;
+using Mini.Social.Media.Graphql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,10 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<MiniSocialMediaDbContext>(option => option.UseSqlServer(configuration.GetConnectionString("MiniSocialMediaDB")));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddPersistenceApplicationServices();
+builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddGraphqlServices();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

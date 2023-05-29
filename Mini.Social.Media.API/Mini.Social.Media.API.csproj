@@ -20,5 +20,9 @@
     <ProjectReference Include="..\Mini.Social.Media.Persistence\Mini.Social.Media.Persistence.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\Mini.Social.Media.Graphql\Mini.Social.Media.Graphql.csproj" />
+    <ProjectReference Include="..\Mini.Social.Media.Graphql\Mini.Social.Media.Graphql.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>
