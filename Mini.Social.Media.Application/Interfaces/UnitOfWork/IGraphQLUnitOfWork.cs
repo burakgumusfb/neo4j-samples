@@ -6,11 +6,11 @@ using Neo4j.Driver;
 using Mini.Social.Media.Domain.Common;
 using Mini.Social.Media.Domain.Entities;
 
-namespace Mini.Social.Media.Application.Interfaces
+namespace Mini.Social.Media.Application.Interfaces.UnitOfWork
 {
     public interface IGraphQLUnitOfWork:ITransactionManager
     {  
-        Task ExecuteWriteAsync(string query);
+        Task<int> ExecuteWriteAsync(string query);
         Task<IResultCursor> ExecuteReadAsync(string query);
     }
 }

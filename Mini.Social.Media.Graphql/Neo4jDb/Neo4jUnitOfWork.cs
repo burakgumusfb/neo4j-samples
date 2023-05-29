@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Mini.Social.Media.Application.Interfaces;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork;
 using Mini.Social.Media.Domain.Common;
 using Mini.Social.Media.Domain.Entities;
 using Mini.Social.Media.Domain.Extensions;
@@ -23,9 +24,15 @@ namespace Mini.Social.Media.Graphql.GraphqlDB
             _session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
         }
 
-        public async Task ExecuteWriteAsync(string query)
+        public async Task<int> ExecuteWriteAsync(string query)
         {
-            await this._transaction.RunAsync(query);
+            var createCommand =  await this._transaction.RunAsync(query);
+            var record = await createCommand.SingleAsync();
+
+            var createdNode = record["u"].As<INode>();
+            var createdNodeId = createdNode.Id.ToInt32();
+
+            return createdNodeId;
         }
 
         public async Task<IResultCursor> ExecuteReadAsync(string query)

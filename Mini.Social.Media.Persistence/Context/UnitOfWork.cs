@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Mini.Social.Media.Application.Interfaces;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork;
 using Mini.Social.Media.Application.Mappings;
 using Mini.Social.Media.Domain.Entities;
 using Mini.Social.Media.Persistence.Context;
@@ -15,7 +16,7 @@ using System.Linq;
 
 namespace Mini.Social.Media.Persistence.Context
 {
-    public class UnitofWork : IUnitofWork
+    public class UnitOfWork : IUnitOfWork
     {
         private bool Disposed = false;
         private readonly MiniSocialMediaDbContext DB;
@@ -26,7 +27,7 @@ namespace Mini.Social.Media.Persistence.Context
 
         public IRepository<User> UserRepository => _userRepository ??= new Repository<User>(DB);
 
-        public UnitofWork(MiniSocialMediaDbContext db)
+        public UnitOfWork(MiniSocialMediaDbContext db)
         {
             DB = db;
         }

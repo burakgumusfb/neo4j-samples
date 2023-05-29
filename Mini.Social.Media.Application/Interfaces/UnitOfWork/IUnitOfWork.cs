@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Data;
 
-namespace Mini.Social.Media.Application.Interfaces
+namespace Mini.Social.Media.Application.Interfaces.UnitOfWork
 {
-    public interface IUnitofWork:ITransactionManager
+    public interface IUnitOfWork:ITransactionManager
     {
         IRepository<User> UserRepository { get; }
         T GetQuery<T>(string query, object parms, CommandType commandType = CommandType.Text);

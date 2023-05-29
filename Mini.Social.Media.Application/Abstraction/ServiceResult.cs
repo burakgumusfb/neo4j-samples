@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Mini.Social.Media.Application.Common.BaseModels
+namespace Mini.Social.Media.Application.Abstraction
 {
     public class ServiceResult<T> 
     {

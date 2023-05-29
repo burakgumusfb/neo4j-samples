@@ -14,8 +14,8 @@ public static class ServiceRegistration
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {   
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        services.AddScoped<IUnitofWork, UnitofWork>();
-        services.AddScoped<IUserAppService,UserAppService>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUserRepository,UserRepository>();
         return services;
     }
 }

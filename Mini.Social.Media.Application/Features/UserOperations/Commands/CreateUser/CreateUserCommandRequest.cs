@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Mini.Social.Media.Application.Common.BaseModels;
+using Mini.Social.Media.Application.Abstraction;
 using Mini.Social.Media.Application.Features.UserOperations.Commands.CreateUser;
 using System;
 using System.Collections.Generic;
