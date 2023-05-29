@@ -18,6 +18,7 @@ builder.Services.AddDbContext<Neo4jSamplesDbContext>(option => option.UseSqlServ
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceApplicationServices();
+builder.Services.AddApplicationServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

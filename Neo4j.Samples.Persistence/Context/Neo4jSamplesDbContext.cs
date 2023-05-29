@@ -50,11 +50,11 @@ namespace Neo4j.Samples.Persistence.Context
                   string parentDirectory = Path.GetDirectoryName(currentDirectory);
 
                   IConfiguration configuration = new ConfigurationBuilder()
-                                   .SetBasePath(parentDirectory + "/Neo4j.Samples.API")
+                                   .SetBasePath(parentDirectory + "/Neo4j.Samples")
                                    .AddJsonFile("appsettings.json")
                                    .Build();
 
-                string connectionString = configuration.GetConnectionString("OnionArchitectureDB");
+                string connectionString = configuration.GetConnectionString("Neo4jSamplesDB");
 
                 optionsBuilder
                    .UseSqlServer(connectionString)

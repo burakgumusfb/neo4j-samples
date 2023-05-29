@@ -16,6 +16,7 @@ public static class ServiceRegistration
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitofWork, UnitofWork>();
         services.AddScoped<IUserAppService,UserAppService>();
+        services.AddScoped<IGraphQLRepository,Neo4JDbRepository>();
         services.AddSingleton(GraphDatabase.Driver("bolt://localhost:7687", AuthTokens.Basic("neo4j", "12345678")));
         return services;
     }

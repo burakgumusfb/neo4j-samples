@@ -18,6 +18,7 @@ namespace Neo4j.Samples.Application.Mappings
     {
 
         private IAsyncSession _session;
+        private IAsyncTransaction _transaction;
         private readonly IDriver _driver;
         public Neo4JDbRepository(IDriver driver)
         {
@@ -25,14 +26,39 @@ namespace Neo4j.Samples.Application.Mappings
             _session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
         }
 
-        public async Task ExecuteWriteAsync(string query, string returnObjectKey, IDictionary<string, object>? parameters = null)
+        public async Task ExecuteWriteAsync(string query)
         {
-            await this._session.ExecuteWriteAsync(t => t.RunAsync(query, parameters));
+            await this._transaction.RunAsync(query);
         }
 
-        public async Task<IResultCursor> ExecuteReadAsync(string query, string returnObjectKey, IDictionary<string, object>? parameters = null)
+        public async Task<IResultCursor> ExecuteReadAsync(string query)
         {
-            return await this._session.ExecuteReadAsync<IResultCursor>(t => t.RunAsync(query, query));
+            return await this._transaction.RunAsync(query);
+
+        }
+
+        public async Task BeginTransactionAsync()
+        {
+            if (_transaction == null)
+            {
+                _transaction = await _session.BeginTransactionAsync();
+            }
+        }
+        public async Task CommitAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.CommitAsync();
+                await _transaction.DisposeAsync();
+            }
+        }
+        public async Task RollbackAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.RollbackAsync();
+                await _transaction.DisposeAsync();
+            }
         }
     }
 }
