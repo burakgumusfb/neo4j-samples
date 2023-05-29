@@ -1,11 +1,20 @@
-﻿using Neo4j.Samples.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using Neo4j.Samples.Persistence;
+using Neo4j.Samples.Persistence.Context;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+IConfiguration configuration = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .Build();
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<Neo4jSamplesDbContext>(option => option.UseSqlServer(configuration.GetConnectionString("Neo4jSamplesDB")));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceApplicationServices();
