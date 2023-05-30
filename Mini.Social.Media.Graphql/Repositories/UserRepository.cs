@@ -13,15 +13,15 @@ namespace Mini.Social.Media.Application.Mappings
 {
     public class UserRepository : INeo4jUserRepository
     {
-        private readonly IGraphQLUnitOfWork _uow;
-        public UserRepository(IGraphQLUnitOfWork uow)
+        private readonly IGraphQLUnitOfWork _gpl;
+        public UserRepository(IGraphQLUnitOfWork gpl)
         {
-            _uow = uow;
+            _gpl = gpl;
         }
 
         public async Task<int> CreateAsync(User entity)
         {
-            return await this._uow.ExecuteWriteAsync(string.Format("CREATE (u:User {{email: '{0}', password: '{1}'}})", entity.Email, entity.Password));
+            return await this._gpl.ExecuteWriteAsync(string.Format("CREATE (u:User {{email: '{0}', password: '{1}'}})", entity.Email, entity.Password));
 
         }
     }

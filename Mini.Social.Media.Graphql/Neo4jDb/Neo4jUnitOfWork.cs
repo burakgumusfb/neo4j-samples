@@ -25,12 +25,12 @@ namespace Mini.Social.Media.Graphql.GraphqlDB
         }
 
         public async Task<int> ExecuteWriteAsync(string query)
-        {
-            var createCommand =  await this._transaction.RunAsync(query);
+        {   
+            query += " RETURN ID(u) AS nodeId";
+            var createCommand = await this._transaction.RunAsync(query);
             var record = await createCommand.SingleAsync();
 
-            var createdNode = record["u"].As<INode>();
-            var createdNodeId = createdNode.Id.ToInt32();
+            var createdNodeId = record["nodeId"].As<int>();
 
             return createdNodeId;
         }

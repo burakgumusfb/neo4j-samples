@@ -18,7 +18,7 @@ namespace Mini.Social.Media.Application.Features.UserOperations.Commands
                 .NotNull()
                 .WithMessage("Email cannot be null")
                 .NotEmpty()
-                .WithMessage("Email cannot be null")
+                .WithMessage("Email cannot be empty")
                 .MaximumLength(20)
                 .WithMessage("Email cannot be empty.")
                 .MinimumLength(3)
