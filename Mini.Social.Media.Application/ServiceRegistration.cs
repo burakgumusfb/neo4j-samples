@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using AutoMapper;
 using Mini.Social.Media.Application.Mappings;
+using Mini.Social.Media.Application.Features.UserOperations.Commands;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

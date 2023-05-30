@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Mini.Social.Media.Application.Application.Features.UserOperations.Commands.CreateUser;
 using Mini.Social.Media.Application.Features.UserOperations.Commands;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork;
 
 namespace Mini.Social.Media.Controllers;
 
@@ -11,17 +12,19 @@ public class UserController : ControllerBase
 {
 
     private readonly IMediator _mediator;
-    public UserController(IMediator mediator)
+    private readonly IUnitOfWork _uow;
+    public UserController(IMediator mediator,IUnitOfWork uow)
     {
         this._mediator = mediator;
+        this._uow = uow;
     }
 
     [HttpPost("create-user")]
     public async Task<IActionResult> CreateUser(CreateUserCommandRequest request)
     {
-       var createStockCommand = new CreateUserCommandValidator();
+       var createStockCommand = new CreateUserCommandValidator(_uow);
 
-       var result = createStockCommand.Validate(request);
+       var result = await createStockCommand.ValidateAsync(request);
 
        if (result.IsValid)
        {

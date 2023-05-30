@@ -38,7 +38,7 @@ namespace Mini.Social.Media.Persistence.Context
                                  .AddJsonFile("appsettings.json")
                                  .Build();
 
-                string connectionString = configuration.GetConnectionString("Neo4jSamplesDB");
+                string connectionString = configuration.GetConnectionString("MiniSocialMediaDB");
 
                 optionsBuilder
                    .UseSqlServer(connectionString)

@@ -5,6 +5,9 @@ using Neo4j.Driver;
 using Mini.Social.Media.Application.Interfaces;
 using Mini.Social.Media.Application.Mappings;
 using Mini.Social.Media.Graphql.GraphqlDB;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork.Repositories.Neo4j;
+
 namespace Mini.Social.Media.Graphql;
 
 public static class ServiceRegistration

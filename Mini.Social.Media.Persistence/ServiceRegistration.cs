@@ -6,6 +6,8 @@ using Neo4j.Driver;
 using Mini.Social.Media.Persistence.Context;
 using Mini.Social.Media.Application.Interfaces;
 using Mini.Social.Media.Application.Mappings;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork.Repositories.Sql;
 
 namespace Mini.Social.Media.Persistence;
 
