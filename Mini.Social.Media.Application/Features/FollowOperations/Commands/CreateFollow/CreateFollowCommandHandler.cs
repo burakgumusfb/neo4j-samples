@@ -16,32 +16,32 @@ namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.Creat
     public class CreateFollowCommandHandler : IRequestHandler<CreateFollowCommandRequest, ServiceResult<CreateFollowCommandResponse>>
     {
 
-        private readonly IGraphQLUnitOfWork _gql;
+        private readonly INeo4jUnitOfWork _nuow;
         private readonly INeo4jUserRepository _neo4jUserRepository;
         private readonly IMapper _mapper;
         public CreateFollowCommandHandler(
             INeo4jUserRepository neo4jUserRepository,
-            IGraphQLUnitOfWork gql,
+            INeo4jUnitOfWork nuow,
              IMapper mapper)
         {
-            _gql = gql;
+            _nuow = nuow;
             _neo4jUserRepository = neo4jUserRepository;
             _mapper = mapper;
         }
         public async Task<ServiceResult<CreateFollowCommandResponse>> Handle(CreateFollowCommandRequest request, CancellationToken cancellationToken)
         {
             var serviceResult = new ServiceResult<CreateFollowCommandResponse>();
-            await this._gql.BeginTransactionAsync();
+            await this._nuow.BeginTransactionAsync();
 
             try
             {
                 await _neo4jUserRepository.CreateFollow(request.CurrentUserEmail,request.TargetUserEmail);
 
-                await this._gql.CommitAsync();
+                await this._nuow.CommitAsync();
             }
             catch (System.Exception ex)
             {  
-               await this._gql.RollbackAsync();
+               await this._nuow.RollbackAsync();
 
                serviceResult.Message = ex.Message;
                serviceResult.MessageType = MessageType.Danger;

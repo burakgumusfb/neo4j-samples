@@ -16,18 +16,21 @@ namespace Mini.Social.Media.Application.Features.UserOperations.Commands.CreateU
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, ServiceResult<CreateUserCommandResponse>>
     {
         private readonly IUnitOfWork _uow;
-        private readonly IGraphQLUnitOfWork _gql;
+        private readonly INeo4jUnitOfWork _gql;
         private readonly INeo4jUserRepository _neo4jUserRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         public CreateUserCommandHandler(
             IUnitOfWork uow,
             INeo4jUserRepository neo4jUserRepository,
-            IGraphQLUnitOfWork gql,
+            IUserRepository userRepository,
+            INeo4jUnitOfWork gql,
              IMapper mapper)
         {
             _uow = uow;
             _gql = gql;
             _neo4jUserRepository = neo4jUserRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
         }
         public async Task<ServiceResult<CreateUserCommandResponse>> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
@@ -41,7 +44,7 @@ namespace Mini.Social.Media.Application.Features.UserOperations.Commands.CreateU
             {
                var userEntity = new User(request.Email,request.Password);
 
-                await _uow.UserRepository.CreateAsync(userEntity);
+                await _userRepository.CreateAsync(userEntity);
                 await _neo4jUserRepository.CreateAsync(userEntity);
 
                 await this._uow.CommitAsync();

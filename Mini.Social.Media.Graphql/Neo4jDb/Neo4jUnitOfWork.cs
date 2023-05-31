@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Mini.Social.Media.Application.Interfaces;
 using Mini.Social.Media.Application.Interfaces.UnitOfWork;
+using Mini.Social.Media.Application.Interfaces.UnitOfWork.Repositories.Neo4j;
 using Mini.Social.Media.Domain.Common;
 using Mini.Social.Media.Domain.Entities;
 using Mini.Social.Media.Domain.Extensions;
@@ -18,6 +19,9 @@ namespace Mini.Social.Media.Graphql.GraphqlDB
         private IAsyncSession _session;
         private IAsyncTransaction _transaction;
         private readonly IDriver _driver;
+
+        public INeo4jUserRepository Neo4jUserRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public Neo4jUnitOfWork(IDriver driver)
         {
             _driver = driver;
