@@ -14,8 +14,8 @@ namespace Mini.Social.Media.Application.Mappings
 {
     public class UserRepository : INeo4jUserRepository
     {
-        private readonly IGraphQLUnitOfWork _gpl;
-        public UserRepository(IGraphQLUnitOfWork gpl)
+        private readonly INeo4jUnitOfWork _gpl;
+        public UserRepository(INeo4jUnitOfWork gpl)
         {
             _gpl = gpl;
         }

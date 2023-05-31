@@ -11,15 +11,15 @@ using Mini.Social.Media.Application.Interfaces.UnitOfWork;
 using Mini.Social.Media.Application.Interfaces.UnitOfWork.Repositories.Sql;
 using Mini.Social.Media.Application.Interfaces.UnitOfWork.Repositories.Neo4j;
 
-namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.CreateRelation
+namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.CreateFollow
 {
-    public class CreateRelationCommandHandler : IRequestHandler<CreateRelationCommandRequest, ServiceResult<CreateRelationCommandResponse>>
+    public class CreateFollowCommandHandler : IRequestHandler<CreateFollowCommandRequest, ServiceResult<CreateFollowCommandResponse>>
     {
 
         private readonly IGraphQLUnitOfWork _gql;
         private readonly INeo4jUserRepository _neo4jUserRepository;
         private readonly IMapper _mapper;
-        public CreateRelationCommandHandler(
+        public CreateFollowCommandHandler(
             INeo4jUserRepository neo4jUserRepository,
             IGraphQLUnitOfWork gql,
              IMapper mapper)
@@ -28,9 +28,9 @@ namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.Creat
             _neo4jUserRepository = neo4jUserRepository;
             _mapper = mapper;
         }
-        public async Task<ServiceResult<CreateRelationCommandResponse>> Handle(CreateRelationCommandRequest request, CancellationToken cancellationToken)
+        public async Task<ServiceResult<CreateFollowCommandResponse>> Handle(CreateFollowCommandRequest request, CancellationToken cancellationToken)
         {
-            var serviceResult = new ServiceResult<CreateRelationCommandResponse>();
+            var serviceResult = new ServiceResult<CreateFollowCommandResponse>();
             await this._gql.BeginTransactionAsync();
 
             try

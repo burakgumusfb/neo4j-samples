@@ -6,12 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Mini.Social.Media.Application.Application.Features.UserOperations.Commands.CreateUser;
 using Mini.Social.Media.Application.Interfaces.UnitOfWork;
 
-namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.CreateRelation
+namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.CreateFollow
 {
-    public class CreateRelationCommandValidator : AbstractValidator<CreateRelationCommandRequest>
+    public class CreateFollowCommandValidator : AbstractValidator<CreateFollowCommandRequest>
     {
         private readonly IUnitOfWork _uow;
-        public CreateRelationCommandValidator()
+        public CreateFollowCommandValidator()
         {
 
             RuleFor(p => p.CurrentUserEmail)
@@ -28,7 +28,7 @@ namespace Mini.Social.Media.Application.Features.FollowOperations.Commands.Creat
 
 
         }
-        public CreateRelationCommandValidator(IUnitOfWork uow)
+        public CreateFollowCommandValidator(IUnitOfWork uow)
         {
             this._uow = uow;
         }

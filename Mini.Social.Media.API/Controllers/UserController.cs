@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Mini.Social.Media.Application.Application.Features.UserOperations.Commands.CreateUser;
-using Mini.Social.Media.Application.Features.FollowOperations.Commands.CreateRelation;
+using Mini.Social.Media.Application.Features.FollowOperations.Commands.CreateFollow;
 using Mini.Social.Media.Application.Features.UserOperations.Commands;
 using Mini.Social.Media.Application.Interfaces.UnitOfWork;
 
@@ -38,10 +38,10 @@ public class UserController : ControllerBase
 
     }
 
-    [HttpPost("create-relation")]
-    public async Task<IActionResult> CreateRelation(CreateRelationCommandRequest request)
+    [HttpPost("create-follow")]
+    public async Task<IActionResult> CreateFollow(CreateFollowCommandRequest request)
     {
-       var createStockCommand = new CreateRelationCommandValidator();
+       var createStockCommand = new CreateFollowCommandValidator();
 
        var result = await createStockCommand.ValidateAsync(request);
 

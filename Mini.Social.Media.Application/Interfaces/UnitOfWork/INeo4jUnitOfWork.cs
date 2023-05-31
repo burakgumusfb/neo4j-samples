@@ -8,11 +8,10 @@ using Mini.Social.Media.Domain.Entities;
 
 namespace Mini.Social.Media.Application.Interfaces.UnitOfWork
 {
-    public interface IGraphQLUnitOfWork:ITransactionManager
+    public interface INeo4jUnitOfWork:ITransactionManager
     {  
         Task<IRecord> ExecuteWriteAsync(string query);
         Task<IResultCursor> ExecuteReadAsync(string query);
-        Task CreateRelation(string query);
     }
 }
 

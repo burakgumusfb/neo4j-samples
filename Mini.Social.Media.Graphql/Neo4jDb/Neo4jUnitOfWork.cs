@@ -12,7 +12,7 @@ using Neo4j.Driver;
 
 namespace Mini.Social.Media.Graphql.GraphqlDB
 {
-    public class Neo4jUnitOfWork : IGraphQLUnitOfWork
+    public class Neo4jUnitOfWork : INeo4jUnitOfWork
     {
 
         private IAsyncSession _session;
@@ -30,15 +30,10 @@ namespace Mini.Social.Media.Graphql.GraphqlDB
             var record = await createCommand.SingleAsync();
             return record;
         }
-        public async Task CreateRelation(string query)
-        {   
-            await this._transaction.RunAsync(query);
-        }
 
         public async Task<IResultCursor> ExecuteReadAsync(string query)
         {
             return await this._transaction.RunAsync(query);
-
         }
 
         public async Task BeginTransactionAsync()
