@@ -24,15 +24,15 @@ namespace Mini.Social.Media.Graphql.GraphqlDB
             _session = driver.AsyncSession(o => o.WithDatabase("neo4j"));
         }
 
-        public async Task<int> ExecuteWriteAsync(string query)
+        public async Task<IRecord> ExecuteWriteAsync(string query)
         {   
-            query += " RETURN ID(u) AS nodeId";
             var createCommand = await this._transaction.RunAsync(query);
             var record = await createCommand.SingleAsync();
-
-            var createdNodeId = record["nodeId"].As<int>();
-
-            return createdNodeId;
+            return record;
+        }
+        public async Task CreateRelation(string query)
+        {   
+            await this._transaction.RunAsync(query);
         }
 
         public async Task<IResultCursor> ExecuteReadAsync(string query)

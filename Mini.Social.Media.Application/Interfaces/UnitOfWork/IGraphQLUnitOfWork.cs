@@ -10,8 +10,9 @@ namespace Mini.Social.Media.Application.Interfaces.UnitOfWork
 {
     public interface IGraphQLUnitOfWork:ITransactionManager
     {  
-        Task<int> ExecuteWriteAsync(string query);
+        Task<IRecord> ExecuteWriteAsync(string query);
         Task<IResultCursor> ExecuteReadAsync(string query);
+        Task CreateRelation(string query);
     }
 }
 

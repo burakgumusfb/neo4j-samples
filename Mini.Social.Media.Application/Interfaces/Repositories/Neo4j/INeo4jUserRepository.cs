@@ -9,6 +9,7 @@ namespace Mini.Social.Media.Application.Interfaces.UnitOfWork.Repositories.Neo4j
     public interface INeo4jUserRepository
     {
         Task<int> CreateAsync(User entity);
+         Task CreateFollow(string currentEmail, string targetEmail);
     }
 }
 
